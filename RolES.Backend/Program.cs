@@ -1,3 +1,5 @@
+using RolES.Backend.DTOs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
@@ -23,8 +25,8 @@ app.MapGet("/", () => //Método sem nome
     });
 });
 
-app.MapPost("/usuario", () =>
+app.MapPost("/usuario", (CadastroUsuarioDto requestBody) =>
 {
-    return Results.Created();
+    return Results.Ok(requestBody);
 });
 app.Run();
